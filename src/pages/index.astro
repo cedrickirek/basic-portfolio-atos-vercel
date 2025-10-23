@@ -1,11 +1,62 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Your Name | Data Scientist & Researcher">
+
+  <section class="intro">
+    <h1>👋 Hi, I'm Cedric Emmanuel ! </h1>
+    <p>
+      I'm a data science student with an interdisciplinary background in engineering, sustainable development, and data science. 
+      I enjoy exploring how data-driven insights can inform smarter, more human decisions.
+    </p>
+    <a href="/projects" class="btn">View My Projects</a>
+  </section>
+
+  <section class="highlights">
+    <h2>💡 Highlights</h2>
+    <ul>
+      <li>📊 Building machine learning models and interactive dashboards.</li>
+      <li>🧪 Researching statistical modeling and regression techniques.</li>
+      <li>🌍 Experienced across multiple continents and disciplines.</li>
+    </ul>
+  </section>
+
+  <section class="links">
+    <h2>🔗 Find Me Online</h2>
+    <ul>
+      <li><a href="https://github.com/cedrickirek" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/cedricemmanuelkire/" target="_blank">LinkedIn</a></li>
+      <li><a href="/contact">Contact Me</a></li>
+      <li><a href="https://youtube.com/@yourfuturechannel" target="_blank">YouTube (coming soon)</a></li>
+    </ul>
+  </section>
+
 </Layout>
+
+<style>
+  .intro {
+    text-align: center;
+    margin: 4rem 0;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background: #4f46e5;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .highlights, .links {
+    margin: 3rem auto;
+    max-width: 600px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin: 0.5rem 0;
+  }
+</style>

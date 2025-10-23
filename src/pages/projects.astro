@@ -1,0 +1,41 @@
+---
+import fs from 'fs';
+import path from 'path';
+import Layout from '../layouts/BaseLayout.astro';
+
+const projectDir = './src/content/projects';
+const projectFiles = fs.readdirSync(projectDir);
+const projects = projectFiles.map(file => {
+  const raw = fs.readFileSync(path.join(projectDir, file), 'utf-8');
+  const match = raw.match(/---\s*([\s\S]*?)\s*---/);
+  const meta = {};
+  if (match) {
+    match[1].split('\n').forEach(line => {
+      const [key, ...rest] = line.split(':');
+      if(key && rest) meta[key.trim()] = rest.join(':').trim().replace(/^"|"$/g, '');
+    });
+  }
+  const content = raw.replace(match[0], '').trim();
+  return { ...meta, content };
+});
+---
+
+<Layout title="Projects | Cedric Emmanuel">
+  <h1 style="text-align:center; margin-bottom:2rem;">💻 My Projects</h1>
+  
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;">
+    {projects.map(p => (
+      <div style="
+        border:1px solid #e0e0e0;
+        border-radius:12px;
+        padding:1.5rem;
+        box-shadow:0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+      " on:mouseover={() => this.style.transform='scale(1.02)'} on:mouseout={() => this.style.transform='scale(1)'}>
+        <h2 style="margin-top:0; color:#4f46e5;">{p.title}</h2>
+        <p><strong>Tags:</strong> {p.tags}</p>
+        <p>{p.content}</p>
+      </div>
+    ))}
+  </div>
+</Layout>
