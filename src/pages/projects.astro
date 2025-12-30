@@ -15,27 +15,235 @@ const projects = projectFiles.map(file => {
       if(key && rest) meta[key.trim()] = rest.join(':').trim().replace(/^"|"$/g, '');
     });
   }
-  const content = raw.replace(match[0], '').trim();
+  const content = raw.replace(match?.[0] || '', '').trim();
   return { ...meta, content };
-});
+}).sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
-
 <Layout title="Projects | Cedric Emmanuel">
-  <h1 style="text-align:center; margin-bottom:2rem;">💻 My Projects</h1>
-  
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;">
-    {projects.map(p => (
-      <div style="
-        border:1px solid #e0e0e0;
-        border-radius:12px;
-        padding:1.5rem;
-        box-shadow:0 4px 10px rgba(0,0,0,0.05);
-        transition: transform 0.2s;
-      " on:mouseover={() => this.style.transform='scale(1.02)'} on:mouseout={() => this.style.transform='scale(1)'}>
-        <h2 style="margin-top:0; color:#4f46e5;">{p.title}</h2>
-        <p><strong>Tags:</strong> {p.tags}</p>
-        <p>{p.content}</p>
-      </div>
-    ))}
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Blog</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <div class="container">
+    <h1>💻 My Projects</h1>
+    <p class="subtitle">Here are some of the projects I've worked on, showcasing my skills in data science, machine learning, and software development.</p>
+
+    <div class="projects-grid">
+      {projects.map(p => (
+        <article class="project-card">
+          {p.image && <img src={p.image} alt={p.title} class="project-image" />}
+          <div class="project-content">
+            <div class="title-row">
+              <h2>{p.title}</h2>
+              {p.status && <span class={`status-badge ${p.status.toLowerCase().replace(' ', '-')}`}>{p.status}</span>}
+            </div>
+            <p class="project-date">{p.date}</p>
+            <p class="project-description">{p.content}</p>
+            <div class="project-tags">
+              {p.tags && p.tags.split(',').map(tag => (
+                <span class="tag">{tag.trim()}</span>
+              ))}
+            </div>
+            <div class="project-links">
+              {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" class="link-btn github">GitHub</a>}
+              {p.demo ? (
+                <a href={p.demo} target="_blank" rel="noopener noreferrer" class="link-btn demo">Watch Demo</a>
+              ) : (
+                <span class="link-btn demo disabled">Demo Coming Soon</span>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   </div>
 </Layout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
+  }
+  
+  .main-nav {
+    background: #4f46e5;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .main-nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #f3f4f6;
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-card h2 {
+    margin: 0;
+    color: #4f46e5;
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .status-badge.completed {
+    background: #d1fae5;
+    color: #065f46;
+  }
+  
+  .status-badge.in-development {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  
+  .project-date {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-description {
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .tag {
+    background: #f3f4f6;
+    padding: 0.35rem 0.85rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    color: #4b5563;
+    font-weight: 500;
+  }
+  
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .link-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  
+  .link-btn.github {
+    background: #1f2937;
+    color: white;
+  }
+  
+  .link-btn.github:hover {
+    background: #111827;
+  }
+  
+  .link-btn.demo {
+    background: #4f46e5;
+    color: white;
+  }
+  
+  .link-btn.demo:hover {
+    background: #4338ca;
+  }
+  
+  .link-btn.disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+</style>
