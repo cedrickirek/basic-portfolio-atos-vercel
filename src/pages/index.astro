@@ -1,13 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 ---
+<Layout section_bar="Projects | Cedric Emmanuel">
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Blog</a>
+    <a href="/experience">Experience</a>
+  </nav>
 
 <Layout title="Your Name | Data Scientist & Researcher">
 
   <section class="intro">
-    <h1>👋 Hi, I'm Cedric Emmanuel ! </h1>
+    <h1>👋 Hey, I'm Cedric Emmanuel ! </h1>
     <p>
-      I'm a data science student with an interdisciplinary background in engineering, sustainable development, and data science. 
+      I'm a data science & A.I. student with an interdisciplinary background in chemical engineering, sustainable development, and data science. 
       I enjoy exploring how data-driven insights can inform smarter, more human decisions.
     </p>
     <a href="/projects" class="btn">View My Projects</a>
@@ -27,36 +34,62 @@ import Layout from "../layouts/Layout.astro";
     <ul>
       <li><a href="https://github.com/cedrickirek" target="_blank">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/cedric-emmanuel-kire-b528111b8/" target="_blank">LinkedIn</a></li>
-      <li><a href="/contact">Contact Me</a></li>
       <li><a href="https://youtube.com/@cedricemmanuelkire8709?si=duj7zILiB1CZQ9sJ" target="_blank">YouTube (coming soon)</a></li>
+      <li> email: not-an-email-adress@gmail.com </li>
+
     </ul>
   </section>
 
 </Layout>
 
-<style>
-  .intro {
-    text-align: center;
-    margin: 4rem 0;
-  }
-  .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    background: #4f46e5;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .highlights, .links {
-    margin: 3rem auto;
-    max-width: 600px;
-  }
-  ul {
-    list-style: none;
+  <style>
+  :global(body) {
+    margin: 0;
     padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
   }
-  li {
-    margin: 0.5rem 0;
-  }
-</style>
+      .main-nav {
+      background: #6122bf;
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    
+    .main-nav a:hover {
+      opacity: 0.8;
+    }
+    .intro {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #6122bf;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .highlights, .links {
+      margin: 3rem auto;
+      max-width: 600px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+  </style>

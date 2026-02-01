@@ -47,14 +47,17 @@ const projects = projectFiles.map(file => {
                 <span class="tag">{tag.trim()}</span>
               ))}
             </div>
-            <div class="project-links">
-              {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" class="link-btn github">GitHub</a>}
-              {p.demo ? (
-                <a href={p.demo} target="_blank" rel="noopener noreferrer" class="link-btn demo">Watch Demo</a>
-              ) : (
-                <span class="link-btn demo disabled">Demo Coming Soon</span>
-              )}
-            </div>
+           
+           <div class="project-links">
+            {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer" class="link-btn github">GitHub</a>}
+            {p['demo powerpoint slides'] && <a href={p['demo powerpoint slides']} target="_blank" rel="noopener noreferrer" class="link-btn slides">PowerPoint Slides</a>}
+            {p.demo ? (
+              <a href={p.demo} target="_blank" rel="noopener noreferrer" class="link-btn demo">Watch Demo</a>
+            ) : (
+              <span class="link-btn demo disabled">Demo Coming Soon</span>
+            )}
+           </div>
+
           </div>
         </article>
       ))}
@@ -246,4 +249,14 @@ const projects = projectFiles.map(file => {
     color: #9ca3af;
     cursor: not-allowed;
   }
+
+  .link-btn.slides {
+  background: #df0707;
+  color: white;
+  }
+
+  .link-btn.slides:hover {
+  background: #df0707;
+  }
+
 </style>

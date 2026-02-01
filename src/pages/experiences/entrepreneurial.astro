@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Entrepreneurial Experience | Cedric Emmanuel">
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Blog</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <a href="/experience" class="back-link">← Back to Experience</a>
+      <h1>🚀 Entrepreneurial Experience</h1>
+      <p class="subtitle">Building startups and freelancing ventures</p>
+    </div>
+
+    <div class="coming-soon">
+      <p>Content coming soon! Share your startup and freelance details to populate this page.</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
+  }
+  
+  .main-nav {
+    background: #4f46e5;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .main-nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .back-link {
+    display: inline-block;
+    color: #4f46e5;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  .subtitle {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  .coming-soon {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  
+  .coming-soon p {
+    color: #6b7280;
+    font-size: 1.1rem;
+  }
+</style>

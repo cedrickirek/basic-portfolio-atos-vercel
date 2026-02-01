@@ -1,0 +1,285 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Corporate Experience | Cedric Emmanuel">
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Blog</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <a href="/experience" class="back-link">← Back to Experience</a>
+      <h1>🏢 Corporate Experience</h1>
+      <p class="subtitle">My journey through leading companies and research institutions</p>
+    </div>
+
+    <div class="timeline">
+      <!-- L'Oréal -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <h2>Data Scientist/Analyst Intern</h2>
+              <h3>L'Oréal</h3>
+            </div>
+            <span class="date">April 2025 - September 2025</span>
+          </div>
+          <p class="location">📍 Clichy, France (Global Headquarters)</p>
+          <ul class="achievements">
+            <li>Led market performance analysis over the past three years for Yves Saint Laurent in UK and France, extracting insights from L'Oréal's enterprise data warehouse (SQL, BigQuery) on key KPIs for campaign planning, including Black Friday and year-end strategies</li>
+            <li>Delivered a 6-page Looker Report and presented findings to brand experts for campaign planning, including Black Friday and year-end strategies</li>
+            <li>Designed an NLP pipeline in BigQuery and Python to infer missing gender information, leveraging regex-based text cleaning. Achieved 90% classification accuracy, enriching 20M+ customer records</li>
+            <li>Conducted customer segmentation as part of a proprietary recommender system, and proposed methodological improvements based on literature review of state-of-the-art recommendation algorithms</li>
+            <li>Achieved 75% recall and 90% gender-classification accuracy on an imbalanced dataset split of 90-10</li>
+          </ul>
+          <div class="skills">
+            <span class="skill">SQL</span>
+            <span class="skill">BigQuery</span>
+            <span class="skill">Python</span>
+            <span class="skill">NLP</span>
+            <span class="skill">Looker</span>
+            <span class="skill">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tokyo Institute of Technology -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <h2>Research Student in Statistical Modelling</h2>
+              <h3>Tokyo Institute of Technology</h3>
+            </div>
+            <span class="date">February 2024 - July 2024</span>
+          </div>
+          <p class="location">📍 Yokohama, Japan</p>
+          <ul class="achievements">
+            <li>Built a Linear Regression model for the prediction of flood waste generated in Abidjan</li>
+            <li>Created a new database with features tailored to flood waste for Abidjan</li>
+            <li>Built the Regression model from scratch with performance metrics 2 times higher than similar research studies</li>
+            <li>Explored the applicability of Bayesian updating for the regression model optimization</li>
+          </ul>
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">Statistical Modeling</span>
+            <span class="skill">Linear Regression</span>
+            <span class="skill">Bayesian Methods</span>
+            <span class="skill">Research</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KOZO KEIKAKU -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <h2>Data Science Intern</h2>
+              <h3>KOZO KEIKAKU ENGINEERING</h3>
+            </div>
+            <span class="date">September 2022 - August 2024</span>
+          </div>
+          <p class="location">📍 Japan</p>
+          <ul class="achievements">
+            <li>Developed an understanding of the business activities and technical experiments in materials science used by the client to handle the original dataset</li>
+            <li>Built Machine Learning programs (XGBoost and Random Forest) to drive design requirements of friction materials used in industrial machines manufactured by the clients</li>
+            <li>Engaged in professional development through regular 1-hour meetings with a dedicated Data Scientist mentor</li>
+          </ul>
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">XGBoost</span>
+            <span class="skill">Random Forest</span>
+            <span class="skill">Materials Science</span>
+            <span class="skill">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
+  }
+  
+  .main-nav {
+    background: #4f46e5;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .main-nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .back-link {
+    display: inline-block;
+    color: #4f46e5;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  .subtitle {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+  
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #4f46e5;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #4f46e5;
+  }
+  
+  .timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .timeline-content h2 {
+    margin: 0 0 0.5rem 0;
+    color: #1f2937;
+    font-size: 1.4rem;
+  }
+  
+  .timeline-content h3 {
+    margin: 0;
+    color: #4f46e5;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .date {
+    color: #6b7280;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  
+  .location {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .achievements {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .achievements li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #374151;
+    line-height: 1.6;
+  }
+  
+  .achievements li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #4f46e5;
+    font-weight: bold;
+  }
+  
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .skill {
+    background: #ede9fe;
+    color: #5b21b6;
+    padding: 0.4rem 0.9rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+</style>

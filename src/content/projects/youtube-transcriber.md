@@ -4,6 +4,7 @@ date: 2024-11-15
 tags: Python, Streamlit, OpenAI, YouTube API, NLP
 github: https://github.com/cedrickirek/transcribing_videos.git
 demo: 
+demo powerpoint slides: https://drive.google.com/drive/folders/1AYS4cCA1NlRcgKxRb8r-pPjf27rbSCrk?dmr=1&ec=wgc-drive-hero-goto 
 image: 
 status: Completed
 ---

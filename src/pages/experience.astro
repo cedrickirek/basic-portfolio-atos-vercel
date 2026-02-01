@@ -1,0 +1,171 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Experience | Cedric Emmanuel">
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Blog</a>
+    <a href="/experience">Experience</a>
+  </nav>
+
+  <div class="container">
+    <h1>💼 My Experience</h1>
+    <p class="subtitle">Explore my professional journey across corporate roles, entrepreneurial ventures, and investment experiences.</p>
+
+    <div class="experience-grid">
+      <a href="/experiences/corporate" class="experience-card corporate">
+        <div class="card-icon">🏢</div>
+        <h2>Corporate Experience</h2>
+        <p>Internships at leading companies like L'Oréal and research institutions, focusing on data science and machine learning.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="/experiences/entrepreneurial" class="experience-card entrepreneurial">
+        <div class="card-icon">🚀</div>
+        <h2>Entrepreneurial Experience</h2>
+        <p>Building startups and freelancing, bringing innovative solutions to real-world problems.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="/experiences/investment" class="experience-card investment">
+        <div class="card-icon">💰</div>
+        <h2>Investment Journey</h2>
+        <p>Exploring crypto and stock markets, learning about financial markets and portfolio management.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
+  }
+  
+  .main-nav {
+    background: #4f46e5;
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .main-nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .experience-card {
+    position: relative;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+  }
+  
+  .experience-card > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  }
+  
+  .corporate {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .entrepreneurial {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  .investment {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+  
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .experience-card h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .experience-card p {
+    line-height: 1.6;
+    opacity: 0.95;
+    margin-bottom: 1.5rem;
+  }
+  
+  .arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-size: 2rem;
+    transition: transform 0.3s;
+  }
+  
+  .experience-card:hover .arrow {
+    transform: translateX(8px);
+  }
+</style>
