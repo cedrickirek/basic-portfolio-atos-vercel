@@ -51,3 +51,6 @@ next-env.d.ts
 /*.png
 /*.docx
 /*.pdf
+
+# Scratch screenshots, not part of the site
+/screenshots-to-be-deleted/
