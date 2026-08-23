@@ -5,7 +5,7 @@ export const site = {
   shortName: "Cedric Emmanuel",
   role: "ML/AI engineer · co-founder & CTO",
   location: "Abidjan, Côte d'Ivoire",
-  url: "https://example.com", // TODO(cedric): set the real domain
+  url: "https://basic-portfolio-atos-vercel.vercel.app",
   description:
     "Personal site of Cédric Emmanuel Kiré — ML/AI engineer and co-founder based in Abidjan.",
 } as const;
