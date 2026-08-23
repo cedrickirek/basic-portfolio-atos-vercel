@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <main className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-10 sm:py-24 lg:max-w-[88rem] lg:px-16">
       <ProjectsHeading />
 
       <div className="mt-16 space-y-16 sm:mt-24 sm:space-y-24">
@@ -20,12 +20,12 @@ export default function ProjectsPage() {
           .map((category) => (
             <section key={category}>
               {/* Label sits left of the row on desktop, above it on mobile. */}
-              <div className="grid gap-6 sm:grid-cols-[10rem_1fr] sm:gap-10">
+              <div className="grid gap-6 sm:grid-cols-[10rem_1fr] sm:gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16">
                 <h2 className="text-lg font-bold tracking-wide sm:pt-1 sm:text-right">
                   {category}
                 </h2>
 
-                <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
                   {byCategory(category).map((project) => (
                     <ProjectCard
                       key={project.slug}

@@ -29,7 +29,7 @@ export function Triptych() {
         <span
           key={line}
           aria-hidden="true"
-          className="text-3xl font-extrabold tracking-tight transition-opacity duration-[800ms] ease-in-out sm:text-5xl lg:text-6xl"
+          className="text-[clamp(1.9rem,6.2vw,7rem)] leading-[1.08] font-extrabold tracking-tight transition-opacity duration-[800ms] ease-in-out"
           style={{
             // Under reduced motion every line stays legible and nothing cycles.
             opacity: reduced ? 1 : i === active ? 1 : 0.15,

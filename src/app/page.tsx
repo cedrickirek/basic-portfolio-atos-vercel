@@ -10,23 +10,23 @@ export default function Home() {
   return (
     <main>
       {/* Hero — the triptych, above where the page wash begins. */}
-      <section className="mx-auto flex min-h-[70svh] w-full max-w-6xl items-center justify-center px-5 py-20 sm:px-8">
+      <section className="mx-auto flex w-full max-w-[110rem] items-center justify-center px-5 pt-24 pb-16 sm:px-10 sm:pt-32 sm:pb-20 lg:px-16">
         <Triptych />
       </section>
 
       {/* Everything below carries the gradient, which spans the full viewport. */}
       <div className="page-wash">
-        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <section className="py-16 sm:py-24">
-          <h2 className="mb-12 text-center text-2xl font-bold sm:text-4xl">
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-10 lg:max-w-[78rem] lg:px-16">
+        <section className="pt-4 pb-16 sm:pt-8 sm:pb-24">
+          <h2 className="mb-12 text-center text-2xl font-bold sm:text-4xl lg:text-5xl">
             Hey, I&apos;m Cedric Emmanuel!
           </h2>
 
-          <div className="grid items-center gap-10 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-14">
+          <div className="grid items-center gap-10 sm:grid-cols-[minmax(0,320px)_1fr] sm:gap-14 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-20">
             <Carousel />
 
             <div>
-              <p className="text-lg leading-relaxed text-balance sm:text-xl">
+              <p className="max-w-2xl text-lg leading-relaxed text-pretty sm:text-xl lg:text-[1.7rem] lg:leading-snug">
                 I aspire to be extremely good at being technical, and also
                 extremely good on the business aspect.
               </p>
@@ -37,7 +37,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-12 py-16 sm:grid-cols-2 sm:gap-16 sm:py-24">
+        <section className="grid gap-12 py-16 sm:grid-cols-2 sm:gap-16 sm:py-24 lg:gap-20">
           <Timeline heading="My Journey so far" entries={journey} />
           <Timeline heading="Work Experiences" entries={work} />
         </section>

@@ -36,9 +36,7 @@ export function ProjectCard({
     <article
       onMouseEnter={() => canHover && setOpen(true)}
       onMouseLeave={() => canHover && setOpen(false)}
-      className={`group relative flex h-fit flex-col overflow-hidden rounded-lg border border-grey/20 bg-white transition-all duration-200 hover:border-orange/60 hover:shadow-lg ${
-        project.featured ? "sm:col-span-2" : ""
-      }`}
+      className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-grey/20 bg-white transition-all duration-200 hover:border-orange/60 hover:shadow-lg"
     >
       <button
         type="button"

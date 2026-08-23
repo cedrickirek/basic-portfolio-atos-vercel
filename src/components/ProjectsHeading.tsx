@@ -12,7 +12,7 @@ export function ProjectsHeading() {
       <motion.span
         layoutId="projects-title"
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="block text-3xl font-extrabold tracking-tight sm:text-5xl"
+        className="block text-[clamp(2rem,5vw,5rem)] font-extrabold tracking-tight"
       >
         My Projects
       </motion.span>
