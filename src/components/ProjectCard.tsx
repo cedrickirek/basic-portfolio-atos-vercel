@@ -46,8 +46,10 @@ export function ProjectCard({
         onClick={() => !canHover && setOpen((v) => !v)}
         className="flex flex-1 flex-col text-left"
       >
-        <div className="relative aspect-video w-full shrink-0 bg-cloud">
-          {project.thumbnail && (
+        {/* No placeholder block when there is no image — an empty grey box
+            reads as a broken thumbnail rather than a deliberate choice. */}
+        {project.thumbnail && (
+          <div className="relative aspect-video w-full shrink-0 bg-cloud">
             <Image
               src={project.thumbnail}
               alt=""
@@ -56,8 +58,8 @@ export function ProjectCard({
               priority={priority}
               className="object-cover"
             />
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="flex flex-1 flex-col p-4">
           <h3 className="text-sm font-semibold text-balance sm:text-base">
