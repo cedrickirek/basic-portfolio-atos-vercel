@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { MotionProvider } from "@/components/MotionProvider";
 import { site } from "@/data/site";
 import "./globals.css";
@@ -7,6 +7,22 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+// Display serif, for headings and figures only. `opsz` is what keeps Fraunces
+// from looking spindly at large sizes -- the variable optical-size axis is the
+// reason this face was picked over a static Bodoni.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+});
+
+// Eyebrow labels and figures. Wide-tracked uppercase at ~11px.
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +48,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable} h-full antialiased`}
+    >
       <body className="min-h-full font-sans">
         <MotionProvider>{children}</MotionProvider>
       </body>

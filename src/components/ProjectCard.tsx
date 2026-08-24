@@ -36,36 +36,42 @@ export function ProjectCard({
     <article
       onMouseEnter={() => canHover && setOpen(true)}
       onMouseLeave={() => canHover && setOpen(false)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-grey/20 bg-white transition-all duration-200 hover:border-orange/60 hover:shadow-lg"
+      className="group relative flex flex-col self-start overflow-hidden border border-rule bg-slate transition-colors duration-200 hover:border-amber/50"
     >
       <button
         type="button"
         aria-expanded={expanded}
         onClick={() => !canHover && setOpen((v) => !v)}
-        className="flex flex-1 flex-col text-left"
+        className="flex flex-col text-left"
       >
         {/* No placeholder block when there is no image — an empty grey box
             reads as a broken thumbnail rather than a deliberate choice. */}
         {project.thumbnail && (
-          <div className="relative aspect-video w-full shrink-0 bg-cloud">
+          <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-ink">
             <Image
               src={project.thumbnail}
               alt=""
               fill
               sizes="(max-width: 640px) 100vw, 320px"
               priority={priority}
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            {/* Scrim so the card body reads as continuous with the photo
+                rather than butting against it on a hard edge. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-slate via-slate/20 to-transparent"
             />
           </div>
         )}
 
-        <div className="flex flex-1 flex-col p-4">
-          <h3 className="text-sm font-semibold text-balance sm:text-base">
+        <div className="flex flex-col p-5">
+          <h3 className="font-serif text-lg leading-snug font-normal text-balance sm:text-xl">
             {project.title}
           </h3>
 
           <p
-            className={`mt-2 text-sm text-grey transition-all ${
+            className={`mt-3 text-sm leading-relaxed text-ash transition-all ${
               open ? "line-clamp-none" : "line-clamp-2"
             }`}
           >
@@ -76,7 +82,7 @@ export function ProjectCard({
             {project.stack.map((tech) => (
               <li
                 key={tech}
-                className="rounded bg-cloud px-2 py-0.5 text-xs font-medium tracking-wide text-grey"
+                className="border border-rule px-2 py-0.5 font-mono text-[0.625rem] tracking-[0.12em] text-ash uppercase"
               >
                 {tech}
               </li>
@@ -86,19 +92,19 @@ export function ProjectCard({
       </button>
 
       {project.links && (
-        <div className="flex gap-4 px-4 pb-4 text-sm font-medium">
+        <div className="flex gap-5 px-4 pb-4">
           {project.links.demo && (
-            <a href={project.links.demo} className="text-orange hover:underline">
+            <a href={project.links.demo} className="font-mono text-[0.6875rem] tracking-[0.14em] text-amber uppercase hover:underline">
               Live demo
             </a>
           )}
           {project.links.repo && (
-            <a href={project.links.repo} className="text-orange hover:underline">
+            <a href={project.links.repo} className="font-mono text-[0.6875rem] tracking-[0.14em] text-amber uppercase hover:underline">
               Repo
             </a>
           )}
           {project.links.pdf && (
-            <a href={project.links.pdf} className="text-orange hover:underline">
+            <a href={project.links.pdf} className="font-mono text-[0.6875rem] tracking-[0.14em] text-amber uppercase hover:underline">
               PDF
             </a>
           )}

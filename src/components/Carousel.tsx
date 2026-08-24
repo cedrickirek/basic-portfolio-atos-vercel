@@ -52,8 +52,10 @@ export function Carousel() {
           if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
           touchStartX.current = null;
         }}
-        className="relative aspect-4/5 w-full overflow-hidden rounded-lg bg-cloud"
+        className="relative aspect-4/5 w-full overflow-hidden border border-rule bg-slate"
       >
+        {/* Same scrim as the hero frame: the studio shots are on white and
+            would otherwise glare against the dark ground. */}
         {slides.map((slide, i) => (
           <Image
             key={slide.src}
@@ -66,9 +68,15 @@ export function Carousel() {
             style={{ opacity: i === index ? 1 : 0 }}
           />
         ))}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+        />
       </div>
 
-      <div className="mt-3 flex justify-center gap-2">
+      <div className="mt-4 flex justify-center gap-2">
+        {/* Same scrim as the hero frame: the studio shots are on white and
+            would otherwise glare against the dark ground. */}
         {slides.map((slide, i) => (
           <button
             key={slide.src}
@@ -76,8 +84,8 @@ export function Carousel() {
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === index}
             onClick={() => go(i)}
-            className={`h-2 w-2 rounded-full transition-colors ${
-              i === index ? "bg-orange" : "bg-grey/30 hover:bg-grey/60"
+            className={`h-1.5 w-4 transition-colors ${
+              i === index ? "bg-amber" : "bg-rule hover:bg-ash/60"
             }`}
           />
         ))}

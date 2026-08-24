@@ -2,17 +2,36 @@
 
 /*
  * Design tokens.
- * Palette follows the Criteo reference: white ground, a single orange accent,
- * greys for support. Type is one sans family separated by weight and size.
+ *
+ * Dark ground with a display serif, after the PrimeEstates reference: a
+ * near-black page, hairline rules instead of colour changes between sections,
+ * and one small amber accent used only on labels and a single button. The
+ * previous white + orange (Criteo) palette read as generic corporate; the
+ * weight here comes from type and rules rather than from colour.
  */
 @theme {
+  /* Ground. `ink` is the page, `slate` a raised panel one step lighter --
+     the only two backgrounds. Sections separate on hairlines, not fills. */
+  --color-ink: #0f0f0f;
+  --color-slate: #161616;
+  --color-bone: #f4f2ee; /* warm off-white, for inverted cards */
   --color-white: #ffffff;
-  --color-ink: #111111;
-  --color-orange: #ff6b35;
-  --color-grey: #6b7280;
-  --color-cloud: #f5f5f5;
+
+  /* Foreground. Body text sits below pure white deliberately -- full white
+     on near-black glares and flattens the serif. */
+  --color-chalk: #ededea;
+  --color-ash: #8a8a85;
+
+  /* Accent. Used tiny: eyebrow labels, nav underline, one filled button.
+     Never as a large block -- scale is what keeps it looking expensive. */
+  --color-amber: #e8b10d;
+
+  /* Hairline. Every section divider and card edge. */
+  --color-rule: #262626;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
 
   /* Interests bar: one full loop of the duplicated list. */
   --animate-marquee: marquee 40s linear infinite;
@@ -27,30 +46,39 @@
   }
 }
 
-/*
- * The page gradient begins at the intro section and carries downward
- * (sketch: "debut d'effet degrade ici"). Kept at a few percent so text
- * contrast never drops below WCAG AA.
- */
 @layer utilities {
-  .page-wash {
-    background-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      color-mix(in srgb, var(--color-orange) 3%, transparent) 40%,
-      color-mix(in srgb, var(--color-orange) 6%, transparent) 100%
-    );
+  /*
+   * Faint grid over the page ground. Sits behind content at low contrast so
+   * large dark areas read as a surface rather than as empty black.
+   */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  /*
+   * Eyebrow label: uppercase mono at small size with wide tracking, the
+   * counterweight to the large serif headings.
+   */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-amber);
   }
 }
 
 body {
-  background: var(--color-white);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-chalk);
 }
 
 /* Every interactive element keeps a visible focus ring, distinct from hover. */
 :focus-visible {
-  outline: 2px solid var(--color-orange);
+  outline: 2px solid var(--color-amber);
   outline-offset: 3px;
 }
 

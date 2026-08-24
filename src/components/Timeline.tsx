@@ -17,8 +17,10 @@ export function Timeline({
 }) {
   return (
     <div>
-      <h3 className="mb-6 text-lg font-bold sm:text-xl">{heading}</h3>
-      <ol className="relative border-l border-grey/25 pl-6">
+      <h3 className="mb-8 font-serif text-2xl font-normal tracking-[-0.01em] sm:text-3xl">
+        {heading}
+      </h3>
+      <ol className="relative border-l border-rule pl-6">
         {entries.map((entry, i) => (
           <motion.li
             key={`${entry.year}-${entry.title}`}
@@ -30,16 +32,16 @@ export function Timeline({
           >
             <span
               aria-hidden="true"
-              className="absolute top-1.5 -left-[1.8rem] h-2.5 w-2.5 rounded-full bg-orange"
+              className="absolute top-2 -left-[1.8rem] h-1.5 w-1.5 bg-amber"
             />
-            <span className="block text-xs font-medium tracking-wide text-grey">
+            <span className="block font-mono text-[0.6875rem] tracking-[0.18em] text-ash uppercase">
               {entry.year}
             </span>
-            <span className="mt-1 block text-sm leading-relaxed sm:text-base">
+            <span className="mt-2 block text-sm leading-relaxed sm:text-base">
               {entry.title}
             </span>
             {entry.detail && (
-              <span className="mt-0.5 block text-sm text-grey">
+              <span className="mt-1 block text-sm text-ash">
                 {entry.detail}
               </span>
             )}
