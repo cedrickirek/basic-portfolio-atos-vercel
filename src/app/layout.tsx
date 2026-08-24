@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import { MotionProvider } from "@/components/MotionProvider";
+import { GridLines } from "@/components/GridLines";
+import { KanvasHeader } from "@/components/KanvasHeader";
 import { site } from "@/data/site";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+// Labels, nav, years, tags. The template leans on a mono for everything
+// small; two families total, not its nineteen.
+const geistMono = Geist_Mono({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 
@@ -32,9 +41,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+    >
       <body className="min-h-full font-sans">
-        <MotionProvider>{children}</MotionProvider>
+        <GridLines />
+        <KanvasHeader />
+        {/* z-10 keeps every section above the grid overlay, below the header. */}
+        <div className="relative z-10 pt-16">
+          <MotionProvider>{children}</MotionProvider>
+        </div>
       </body>
     </html>
   );

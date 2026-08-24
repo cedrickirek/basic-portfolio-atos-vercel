@@ -5,9 +5,11 @@ import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 import { triptych } from "@/data/site";
 
 /**
- * The signature element: three lines held in fixed positions, one at full
- * opacity and the others ghosted behind it like a watermark. The active line
- * cycles on a slow loop. Nothing reflows — only opacity changes.
+ * The signature element, in the template's idiom: big uppercase sans where
+ * the active line is solid white and the others render as outlines
+ * (.text-stroke), the way the source strokes "CREATIVE STUDIO" under a solid
+ * "DIGITAL". The active line still cycles; stroke does not animate, so the
+ * swap rides on the colour change alone.
  */
 export function Triptych() {
   const reduced = useReducedMotionSafe();
@@ -23,21 +25,24 @@ export function Triptych() {
   }, [reduced]);
 
   return (
-    <h1 className="flex flex-col items-center gap-1 text-center sm:gap-2">
+    <h1 className="flex flex-col text-left">
       <span className="sr-only">{triptych.join(". ")}.</span>
-      {triptych.map((line, i) => (
-        <span
-          key={line}
-          aria-hidden="true"
-          className="text-[clamp(1.9rem,6.2vw,7rem)] leading-[1.08] font-extrabold tracking-tight transition-opacity duration-[800ms] ease-in-out"
-          style={{
-            // Under reduced motion every line stays legible and nothing cycles.
-            opacity: reduced ? 1 : i === active ? 1 : 0.15,
-          }}
-        >
-          {line}
-        </span>
-      ))}
+      {triptych.map((line, i) => {
+        // Under reduced motion nothing cycles: the first line stays solid and
+        // the rest stay stroked, matching the template's static hero.
+        const solid = reduced ? i === 0 : i === active;
+        return (
+          <span
+            key={line}
+            aria-hidden="true"
+            className={`text-[clamp(2.4rem,6.5vw,7rem)] leading-[0.98] font-extrabold tracking-tight uppercase transition-colors duration-500 ${
+              solid ? "text-white" : "text-stroke"
+            }`}
+          >
+            {line}
+          </span>
+        );
+      })}
     </h1>
   );
 }

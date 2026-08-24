@@ -12,7 +12,7 @@ export function Interests() {
 
   if (reduced) {
     return (
-      <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-grey">
+      <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-xs tracking-[0.14em] text-fog uppercase">
         {interests.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -27,11 +27,15 @@ export function Interests() {
           <ul
             key={copy}
             aria-hidden={copy === 1}
-            className="flex shrink-0 gap-8 text-sm text-grey"
+            className="flex shrink-0 items-center gap-8 text-3xl font-extrabold tracking-tight uppercase sm:text-5xl"
           >
-            {interests.map((item) => (
-              <li key={item} className="whitespace-nowrap">
-                {item}
+            {/* Alternating solid and outlined items, echoing the hero. */}
+            {interests.map((item, i) => (
+              <li key={item} className="flex items-center gap-8 whitespace-nowrap">
+                <span className={i % 2 === 0 ? "text-white" : "text-stroke"}>
+                  {item}
+                </span>
+                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-accent" />
               </li>
             ))}
           </ul>

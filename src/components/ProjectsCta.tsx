@@ -11,15 +11,21 @@ export function ProjectsCta() {
   return (
     <Link
       href="/projects"
-      className="group inline-block border border-ink px-7 py-4 transition-all duration-[250ms] ease-out hover:scale-[1.04] hover:border-orange hover:shadow-[0_0_24px_rgba(255,107,53,0.45)]"
+      className="group inline-flex items-stretch border border-white/25 transition-colors duration-200 hover:border-accent"
     >
       <motion.span
         layoutId="projects-title"
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="block text-base font-semibold sm:text-lg"
+        className="block px-7 py-4 font-mono text-xs font-medium tracking-[0.18em] text-white uppercase sm:text-sm"
       >
         See my Projects here
       </motion.span>
+      <span
+        aria-hidden="true"
+        className="flex items-center bg-accent px-5 font-mono text-night transition-transform duration-200 group-hover:translate-x-0.5"
+      >
+        &rarr;
+      </span>
     </Link>
   );
 }

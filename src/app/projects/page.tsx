@@ -10,8 +10,16 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
+  // Stable CASE numbering across every category, in display order.
+  const caseIndex = new Map(
+    categories
+      .flatMap((category) => byCategory(category))
+      .map((project, i) => [project.slug, i] as const),
+  );
+
   return (
-    <main className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-10 sm:py-24 lg:max-w-[88rem] lg:px-16">
+    <main className="px-5 py-16 sm:px-10 sm:py-24 lg:px-16">
+      <p className="eyebrow mb-6">Selected work</p>
       <ProjectsHeading />
 
       <div className="mt-16 space-y-16 sm:mt-24 sm:space-y-24">
@@ -20,17 +28,18 @@ export default function ProjectsPage() {
           .map((category) => (
             <section key={category}>
               {/* Label sits left of the row on desktop, above it on mobile. */}
-              <div className="grid gap-6 sm:grid-cols-[10rem_1fr] sm:gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16">
-                <h2 className="text-lg font-bold tracking-wide sm:pt-1 sm:text-right">
+              <div className="grid gap-6 border-t border-rule pt-10 sm:grid-cols-[10rem_1fr] sm:gap-10 lg:grid-cols-[16rem_1fr] lg:gap-16">
+                <h2 className="font-mono text-[0.6875rem] tracking-[0.18em] text-accent uppercase sm:pt-2">
                   {category}
                 </h2>
 
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+                <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 2xl:grid-cols-4">
                   {byCategory(category).map((project) => (
                     <ProjectCard
                       key={project.slug}
                       project={project}
                       priority={prioritySlugs.has(project.slug)}
+                      index={caseIndex.get(project.slug)}
                     />
                   ))}
                 </div>
@@ -39,12 +48,12 @@ export default function ProjectsPage() {
           ))}
       </div>
 
-      <div className="mt-20 text-center">
+      <div className="mt-24 border-t border-rule pt-8">
         <Link
           href="/"
-          className="text-sm font-medium text-grey hover:text-orange"
+          className="font-mono text-[0.6875rem] tracking-[0.18em] text-fog uppercase transition-colors hover:text-accent"
         >
-          ← Back home
+          &larr; Back home
         </Link>
       </div>
     </main>

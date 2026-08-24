@@ -8,11 +8,11 @@ import { motion } from "motion/react";
  */
 export function ProjectsHeading() {
   return (
-    <h1 className="text-center">
+    <h1>
       <motion.span
         layoutId="projects-title"
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="block text-[clamp(2rem,5vw,5rem)] font-extrabold tracking-tight"
+        className="block text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[0.98] font-extrabold tracking-tight text-white uppercase"
       >
         My Projects
       </motion.span>

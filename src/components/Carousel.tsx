@@ -52,7 +52,7 @@ export function Carousel() {
           if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
           touchStartX.current = null;
         }}
-        className="relative aspect-4/5 w-full overflow-hidden rounded-lg bg-cloud"
+        className="relative aspect-4/5 w-full overflow-hidden border border-rule bg-panel"
       >
         {slides.map((slide, i) => (
           <Image
@@ -66,9 +66,15 @@ export function Carousel() {
             style={{ opacity: i === index ? 1 : 0 }}
           />
         ))}
+        {/* The studio shots are on near-white and glare against the dark
+            ground; the scrim ties them in. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/70 via-transparent to-transparent"
+        />
       </div>
 
-      <div className="mt-3 flex justify-center gap-2">
+      <div className="mt-4 flex justify-center gap-2">
         {slides.map((slide, i) => (
           <button
             key={slide.src}
@@ -76,8 +82,8 @@ export function Carousel() {
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === index}
             onClick={() => go(i)}
-            className={`h-2 w-2 rounded-full transition-colors ${
-              i === index ? "bg-orange" : "bg-grey/30 hover:bg-grey/60"
+            className={`h-1 w-5 transition-colors ${
+              i === index ? "bg-accent" : "bg-rule hover:bg-fog/50"
             }`}
           />
         ))}
