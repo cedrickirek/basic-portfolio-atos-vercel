@@ -31,6 +31,20 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist), ui-monospace, "SFMono-Regular", monospace;
 
+  /* Hero typewriter caret. A hard on/off step, not a fade -- a terminal
+     cursor does not dim. Steady through typing and erasing alike. */
+  --animate-caret: caret 1.06s steps(1, end) infinite;
+  @keyframes caret {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    50.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+
   /* Interests bar: one full loop of the duplicated list. */
   --animate-marquee: marquee 40s linear infinite;
   @keyframes marquee {

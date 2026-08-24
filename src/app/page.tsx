@@ -47,8 +47,10 @@ export default function Home() {
             </p>
             <Triptych />
             <p className="mt-8 max-w-xl text-base leading-relaxed text-slate-200/90 sm:text-lg">
-              {site.location}. I aspire to be extremely good at being
-              technical, and also extremely good on the business aspect.
+              {site.location}. I am building toward being genuinely strong on
+              both sides at once &mdash; deep enough technically to build the
+              thing, sharp enough commercially to know why it is worth
+              building. Most people pick one. I intend to keep both.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -102,7 +104,7 @@ export default function Home() {
                 <p className="mt-2 font-mono text-[0.6875rem] leading-relaxed tracking-[0.14em] text-white uppercase">
                   Co-founder &amp; CTO — EdTech
                   <br />
-                  Abidjan, Côte d&apos;Ivoire
+                  Paris, France
                 </p>
               </div>
             </div>
@@ -142,9 +144,22 @@ export default function Home() {
               Hey, I&apos;m Cedric Emmanuel.
             </h2>
             <p className="mt-8 max-w-3xl text-lg leading-relaxed sm:text-xl">
-              An ML/AI engineer and co-founder based in Abidjan, working across
-              research, applied machine learning, and the products built on
-              top of them.
+              An aspiring ML/AI engineer and co-founder based in Paris, France,
+              working across research, applied machine learning, and the
+              products built on top of them.
+            </p>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed sm:text-xl">
+              My interests run wide, and new ideas arrive faster than I can
+              act on them. So I build around the ones that stay &mdash; a
+              model, a prototype, a small tool &mdash; and keep what survives
+              contact with real use. Most of it ends up in{" "}
+              <Link
+                href="/projects"
+                className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+              >
+                all my projects
+              </Link>
+              .
             </p>
           </div>
         </div>

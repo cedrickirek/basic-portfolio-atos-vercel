@@ -3,11 +3,11 @@
 export const site = {
   name: "Cédric Emmanuel Kiré",
   shortName: "Cedric Emmanuel",
-  role: "ML/AI engineer · co-founder & CTO",
-  location: "Abidjan, Côte d'Ivoire",
+  role: "Aspiring ML/AI engineer",
+  location: "Paris, France",
   url: "https://basic-portfolio-atos-vercel.vercel.app",
   description:
-    "Personal site of Cédric Emmanuel Kiré — ML/AI engineer and co-founder based in Abidjan.",
+    "Personal site of Cédric Emmanuel Kiré — aspiring ML/AI engineer and co-founder based in Paris, France.",
 } as const;
 
 export const contact = {
@@ -17,10 +17,17 @@ export const contact = {
   cv: "/docs/cedric-kire-cv.pdf",
 } as const;
 
-export const triptych = [
-  "Never Stop Improving",
-  "Never Stop Exploring",
-  "Never Stop Building",
+/**
+ * The hero headline, split for the typewriter: `triptychStem` never changes,
+ * while `triptychWords` are typed and erased one after another beneath the
+ * caret. Keep the stem free of trailing space -- the component owns the gap.
+ */
+export const triptychStem = "Never stop";
+
+export const triptychWords = [
+  "improving",
+  "exploring",
+  "building",
 ] as const;
 
 export const interests = [
