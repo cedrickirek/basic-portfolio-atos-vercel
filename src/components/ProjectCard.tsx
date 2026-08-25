@@ -72,7 +72,10 @@ export function ProjectCard({
     <article
       onMouseEnter={() => canHover && setOpen(true)}
       onMouseLeave={() => canHover && setOpen(false)}
-      className="group relative flex h-full flex-col overflow-hidden border border-rule bg-panel/60 transition-colors duration-200 hover:border-accent/60"
+      // The floated description escapes the card box, so a hovered card has
+      // to paint above its neighbours rather than under the next one.
+      style={open ? { zIndex: 20 } : undefined}
+      className="group relative flex h-full flex-col border border-rule bg-panel/60 transition-colors duration-200 hover:border-accent/60"
     >
       <button
         type="button"
@@ -105,13 +108,29 @@ export function ProjectCard({
             {project.title}
           </h3>
 
-          <p
-            className={`mt-3 text-sm leading-relaxed text-fog transition-all ${
-              open ? "line-clamp-none" : "line-clamp-2"
-            }`}
-          >
-            {project.description}
-          </p>
+          {/*
+            The description reserves three lines in the layout and never
+            changes the card's height. Opening it floats the full text over
+            the card on its own layer: every card in a grid row is stretched
+            to a common height, so one card growing re-flowed the whole row,
+            and running the pointer along a row read as a jump at each
+            crossing. The longest description here is six lines, so the
+            floated copy is left to size itself rather than scroll.
+          */}
+          <div className="relative mt-3">
+            <p className="line-clamp-3 text-sm leading-relaxed text-fog">
+              {project.description}
+            </p>
+
+            <p
+              aria-hidden="true"
+              className={`absolute inset-x-0 top-0 z-10 -m-2 rounded-xs bg-panel p-2 text-sm leading-relaxed text-chalk ring-1 ring-accent/30 transition-opacity duration-200 ${
+                open ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+            >
+              {project.description}
+            </p>
+          </div>
 
           {/* Touch has no hover to reveal the rest, so say the card opens. */}
           {!canHover && (
