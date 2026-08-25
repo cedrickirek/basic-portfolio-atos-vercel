@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "Transcribes and summarises YouTube videos into digestible notes, built because too many hours were disappearing into the feed.",
     stack: ["Python", "Streamlit", "OpenAI", "NLP"],
     category: "Apps",
-    thumbnail: "/images/youtube-videos_summary.png",
+    thumbnail: "/images/youtube-transcriber.jpg",
     links: { repo: "https://github.com/cedrickirek/transcribing_videos" },
   },
 
