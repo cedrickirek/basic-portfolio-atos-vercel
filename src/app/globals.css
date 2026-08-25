@@ -64,9 +64,13 @@
   /*
    * Outlined display type, the template's signature. Transparent fill with a
    * faint white stroke; pair with solid white on the active line.
+   *
+   * The alpha is a contrast floor, not a taste call: at 0.3 the stroke
+   * measured 2.63:1 against the night ground and failed the 3:1 minimum for
+   * large text. 0.42 clears it with margin and still reads as an outline.
    */
   .text-stroke {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.42);
     color: transparent;
   }
 
