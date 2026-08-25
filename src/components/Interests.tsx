@@ -22,16 +22,18 @@ export function Interests() {
 
   return (
     <div className="group relative overflow-hidden py-2">
-      <div className="flex w-max animate-marquee gap-8 group-hover:[animation-play-state:paused]">
+      {/* --marquee-gap must match the gap utility below: the keyframe shifts
+          by half of it to land one copy over without a seam. */}
+      <div className="flex w-max animate-marquee gap-5 [--marquee-gap:1.25rem] group-hover:[animation-play-state:paused] sm:gap-8 sm:[--marquee-gap:2rem]">
         {[0, 1].map((copy) => (
           <ul
             key={copy}
             aria-hidden={copy === 1}
-            className="flex shrink-0 items-center gap-8 text-3xl font-extrabold tracking-tight uppercase sm:text-5xl"
+            className="flex shrink-0 items-center gap-5 text-2xl font-extrabold tracking-tight uppercase sm:gap-8 sm:text-5xl"
           >
             {/* Alternating solid and outlined items, echoing the hero. */}
             {interests.map((item, i) => (
-              <li key={item} className="flex items-center gap-8 whitespace-nowrap">
+              <li key={item} className="flex items-center gap-5 whitespace-nowrap sm:gap-8">
                 <span className={i % 2 === 0 ? "text-white" : "text-stroke"}>
                   {item}
                 </span>

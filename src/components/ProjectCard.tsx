@@ -80,6 +80,16 @@ export function ProjectCard({
             {project.description}
           </p>
 
+          {/* Touch has no hover to reveal the rest, so say the card opens. */}
+          {!canHover && (
+            <span
+              aria-hidden="true"
+              className="mt-2 font-mono text-[0.625rem] tracking-[0.14em] text-accent uppercase"
+            >
+              {open ? "Tap to close" : "Tap to read more"}
+            </span>
+          )}
+
           <ul className="mt-3 flex flex-wrap gap-1.5">
             {project.stack.map((tech) => (
               <li

@@ -40,7 +40,7 @@ export default function Home() {
           className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-night"
         />
 
-        <div className="relative grid min-h-[calc(100svh-4rem)] gap-10 px-5 py-14 sm:px-10 lg:grid-cols-12 lg:items-center lg:gap-0 lg:px-16">
+        <div className="relative grid gap-8 px-5 py-10 sm:gap-10 sm:px-10 sm:py-14 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-12 lg:items-center lg:gap-0 lg:px-16">
           <div className="lg:col-span-7 lg:pr-16">
             <p className="eyebrow mb-8 inline-block border border-white/25 px-3 py-2 text-white/90">
               {site.role}
@@ -52,16 +52,16 @@ export default function Home() {
               building and selling it accordingly.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col gap-3 min-[400px]:flex-row min-[400px]:flex-wrap sm:mt-10 sm:gap-4">
               <Link
                 href="/projects"
-                className="bg-white px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-night uppercase transition-colors hover:bg-accent"
+                className="bg-white px-8 py-4 text-center font-mono text-xs font-medium tracking-[0.18em] text-night uppercase transition-colors hover:bg-accent"
               >
                 View my projects
               </Link>
               <a
                 href={contact.cv}
-                className="border border-white/30 px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-white uppercase transition-colors hover:border-accent hover:text-accent"
+                className="border border-white/30 px-8 py-4 text-center font-mono text-xs font-medium tracking-[0.18em] text-white uppercase transition-colors hover:border-accent hover:text-accent"
               >
                 Visualize my CV
               </a>
@@ -70,7 +70,7 @@ export default function Home() {
 
           {/* Portrait panel. First on phones so the page opens on a face. */}
           <div className="order-first lg:order-none lg:col-span-5">
-            <div className="relative aspect-4/5 w-full max-w-[24rem] overflow-hidden border border-white/15 lg:max-w-none">
+            <div className="relative aspect-4/5 max-h-[58svh] w-full max-w-[20rem] overflow-hidden border border-white/15 sm:max-h-none sm:max-w-[24rem] lg:max-w-none">
               {imageSlots.heroPortrait ? (
                 <Image
                   src={imageSlots.heroPortrait}
@@ -92,7 +92,7 @@ export default function Home() {
 
               {/* Status box, after the template -- content is real: current
                   role from the timeline, location from site data. */}
-              <div className="absolute right-0 bottom-6 border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+              <div className="absolute right-0 bottom-3 border border-white/10 bg-white/5 p-3 backdrop-blur-sm sm:bottom-6 sm:p-4">
                 <p className="flex items-center gap-2 font-mono text-[0.625rem] tracking-[0.18em] text-white/70 uppercase">
                   Status
                   <span className="relative flex h-1.5 w-1.5">
@@ -114,14 +114,14 @@ export default function Home() {
       {/* ---- Fact triplet, divided by hairlines like the template's rows.
               Every figure is derived from real site data. ---- */}
       <section className="border-y border-rule">
-        <div className="grid sm:grid-cols-3 sm:divide-x sm:divide-rule">
+        <div className="grid divide-y divide-rule sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {[
             { n: String(projectCount).padStart(2, "0"), label: "Projects" },
             { n: String(thesisCount).padStart(2, "0"), label: "Research theses" },
             // CI, UK, Japan, France -- from the journey timeline.
             { n: "04", label: "Countries lived in" },
           ].map((f) => (
-            <div key={f.label} className="px-5 py-10 sm:px-10 lg:px-16">
+            <div key={f.label} className="px-5 py-7 sm:px-10 sm:py-10 lg:px-16">
               <p className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl">
                 {f.n}
               </p>
@@ -194,7 +194,7 @@ export default function Home() {
             className="absolute inset-0 bg-gradient-to-r from-night via-night/70 to-night/40"
           />
         )}
-        <div className="relative flex min-h-[50vh] flex-col items-start justify-center px-5 py-20 sm:px-10 lg:px-16">
+        <div className="relative flex min-h-[38vh] flex-col items-start justify-center px-5 py-14 sm:min-h-[50vh] sm:px-10 sm:py-20 lg:px-16">
           <p className="eyebrow mb-6">Selected work</p>
           <p className="text-[clamp(2.2rem,6vw,6rem)] leading-[1] font-extrabold tracking-tight text-white uppercase">
             Research · Apps
@@ -227,7 +227,7 @@ export default function Home() {
         <p className="eyebrow mb-6">Reach out</p>
         <a
           href={`mailto:${contact.email}`}
-          className="text-2xl font-extrabold tracking-tight break-all text-white uppercase transition-colors hover:text-accent sm:text-4xl lg:text-5xl"
+          className="text-xl font-extrabold tracking-tight break-words text-white uppercase transition-colors hover:text-accent min-[400px]:text-2xl sm:text-4xl lg:text-5xl"
         >
           {contact.email}
         </a>

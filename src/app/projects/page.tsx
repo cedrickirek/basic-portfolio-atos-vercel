@@ -22,14 +22,14 @@ export default function ProjectsPage() {
       <p className="eyebrow mb-6">Selected work</p>
       <ProjectsHeading />
 
-      <div className="mt-16 space-y-16 sm:mt-24 sm:space-y-24">
+      <div className="mt-12 space-y-12 sm:mt-24 sm:space-y-24">
         {categories
           .filter((category) => byCategory(category).length > 0)
           .map((category) => (
             <section key={category}>
               {/* Label sits left of the row on desktop, above it on mobile. */}
-              <div className="grid gap-6 border-t border-rule pt-10 sm:grid-cols-[10rem_1fr] sm:gap-10 lg:grid-cols-[16rem_1fr] lg:gap-16">
-                <h2 className="font-mono text-[0.6875rem] tracking-[0.18em] text-accent uppercase sm:pt-2">
+              <div className="grid gap-5 border-t border-rule pt-7 sm:grid-cols-[10rem_1fr] sm:gap-10 sm:pt-10 lg:grid-cols-[16rem_1fr] lg:gap-16">
+                <h2 className="font-mono text-base tracking-[0.1em] text-accent uppercase sm:pt-2">
                   {category}
                 </h2>
 

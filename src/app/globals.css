@@ -52,8 +52,10 @@
       transform: translateX(0);
     }
     to {
-      /* Half the doubled track, plus the gap between the two copies. */
-      transform: translateX(calc(-50% - 1rem));
+      /* Half the doubled track, plus the gap between the two copies. The
+         gap is responsive, so it arrives as --marquee-gap rather than being
+         hard-coded here -- a fixed offset would leave a seam on mobile. */
+      transform: translateX(calc(-50% - var(--marquee-gap, 1rem) / 2));
     }
   }
 }
