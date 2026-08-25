@@ -8,6 +8,17 @@ export type Project = {
   category: Category;
   thumbnail?: string;
   links?: { demo?: string; repo?: string; pdf?: string };
+  /**
+   * A vertical walkthrough of the project, shot reel-style (9:16). `poster`
+   * is the still shown before playback and in the homepage strip; without it
+   * the browser shows a black frame until the first frame decodes.
+   *
+   * Drop the file in public/videos/. Keep it H.264 MP4 -- the static export
+   * does no transcoding, so whatever ships is what every visitor downloads.
+   */
+  reel?: { src: string; poster?: string; caption?: string };
+  /** Slide deck for the project, as a PDF in public/docs/. */
+  slides?: string;
 };
 
 /**

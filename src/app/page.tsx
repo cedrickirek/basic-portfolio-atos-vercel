@@ -5,9 +5,10 @@ import { Carousel } from "@/components/Carousel";
 import { ProjectsCta } from "@/components/ProjectsCta";
 import { Timeline } from "@/components/Timeline";
 import { Interests } from "@/components/Interests";
+import { ReelStrip } from "@/components/ReelStrip";
 import { contact, site } from "@/data/site";
 import { journey, work } from "@/data/timeline";
-import { categories, byCategory } from "@/data/projects";
+import { categories, byCategory, projects } from "@/data/projects";
 import { imageSlots } from "@/data/kanvas";
 
 export default function Home() {
@@ -68,9 +69,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Portrait panel. First on phones so the page opens on a face. */}
-          <div className="order-first lg:order-none lg:col-span-5">
-            <div className="relative aspect-4/5 max-h-[58svh] w-full max-w-[20rem] overflow-hidden border border-white/15 sm:max-h-none sm:max-w-[24rem] lg:max-w-none">
+          {/* Portrait panel. The copy leads on phones -- the headline is the
+              message and the portrait pushed it under the fold. From lg it
+              takes the right-hand column, where it sits beside the copy. */}
+          <div className="lg:col-span-5">
+            <div className="relative aspect-4/5 w-full max-w-[22rem] overflow-hidden border border-white/15 sm:max-w-[24rem] lg:max-w-none">
               {imageSlots.heroPortrait ? (
                 <Image
                   src={imageSlots.heroPortrait}
@@ -206,6 +209,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ---- Reel extracts. Renders nothing until a project has a reel, so
+              the section is invisible rather than empty until then. ---- */}
+      {projects.some((p) => p.reel) && (
+        <section className="border-t border-rule px-5 py-16 sm:px-10 sm:py-24 lg:px-16">
+          <p className="eyebrow mb-2">In my own words</p>
+          <h2 className="mb-10 text-3xl font-extrabold tracking-tight text-white uppercase sm:text-5xl">
+            Project walkthroughs
+          </h2>
+          <ReelStrip projects={projects} />
+        </section>
+      )}
 
       {/* ---- Two timelines ---- */}
       <section className="px-5 py-16 sm:px-10 sm:py-24 lg:px-16">
