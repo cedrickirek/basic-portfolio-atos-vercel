@@ -14,9 +14,12 @@ import type { Project } from "@/data/projects";
  */
 export function ReelModal({
   project,
+  mode = "reel",
   onClose,
 }: {
   project: Project;
+  /** "reel" plays the walkthrough; "details" shows the full write-up. */
+  mode?: "reel" | "details";
   onClose: () => void;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -74,13 +77,17 @@ export function ReelModal({
     };
   }, [onClose, focusables]);
 
-  if (!project.reel) return null;
+  if (mode === "reel" && !project.reel) return null;
 
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={`${project.title} — video walkthrough`}
+      aria-label={
+        mode === "reel"
+          ? `${project.title} — video walkthrough`
+          : project.title
+      }
       onClick={onClose}
       className="fixed inset-0 z-[60] flex items-center justify-center bg-night/90 p-4 backdrop-blur-sm"
     >
@@ -90,35 +97,62 @@ export function ReelModal({
         // The backdrop closes on click; the panel must not pass its own
         // clicks up to it.
         onClick={(e) => e.stopPropagation()}
-        className="relative flex max-h-full w-full max-w-[26rem] flex-col outline-none"
+        className={`relative flex max-h-full w-full flex-col overflow-y-auto outline-none ${
+          mode === "reel" ? "max-w-[26rem]" : "max-w-[34rem]"
+        }`}
       >
         <div className="mb-3 flex items-start justify-between gap-4">
+          {/* In details mode the panel carries its own heading, so the
+              header would print the title twice. */}
           <p className="font-mono text-[0.6875rem] leading-relaxed tracking-[0.14em] text-fog uppercase">
-            {project.title}
+            {mode === "reel" ? project.title : project.category}
           </p>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close video"
+            aria-label="Close"
             className="shrink-0 border border-rule px-2.5 py-1 font-mono text-[0.6875rem] text-fog uppercase transition-colors hover:border-accent hover:text-accent"
           >
             Esc &times;
           </button>
         </div>
 
-        <video
-          src={project.reel.src}
-          poster={project.reel.poster}
-          controls
-          autoPlay
-          playsInline
-          className="max-h-[78svh] w-full bg-black object-contain"
-        />
+        {mode === "reel" && project.reel ? (
+          <>
+            <video
+              src={project.reel.src}
+              poster={project.reel.poster}
+              controls
+              autoPlay
+              playsInline
+              className="max-h-[78svh] w-full bg-black object-contain"
+            />
 
-        {project.reel.caption && (
-          <p className="mt-3 text-sm leading-relaxed text-fog">
-            {project.reel.caption}
-          </p>
+            {project.reel.caption && (
+              <p className="mt-3 text-sm leading-relaxed text-fog">
+                {project.reel.caption}
+              </p>
+            )}
+          </>
+        ) : (
+          <div className="border border-rule bg-panel p-6">
+            <h2 className="text-base font-bold tracking-tight text-white uppercase text-balance sm:text-lg">
+              {project.title}
+            </h2>
+            <p className="mt-4 leading-relaxed text-chalk">
+              {project.description}
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-1.5">
+              {project.stack.map((tech) => (
+                <li
+                  key={tech}
+                  className="border border-rule px-2 py-0.5 font-mono text-[0.625rem] tracking-[0.12em] text-fog uppercase"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>

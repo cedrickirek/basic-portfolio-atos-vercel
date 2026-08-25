@@ -55,7 +55,7 @@ export function ProjectCard({
   index?: number;
 }) {
   const [canHover, setCanHover] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const [reelOpen, setReelOpen] = useState(false);
 
   useEffect(() => {
@@ -66,22 +66,13 @@ export function ProjectCard({
     return () => query.removeEventListener("change", sync);
   }, []);
 
-  const expanded = canHover ? undefined : open;
-
   return (
-    <article
-      onMouseEnter={() => canHover && setOpen(true)}
-      onMouseLeave={() => canHover && setOpen(false)}
-      // The floated description escapes the card box, so a hovered card has
-      // to paint above its neighbours rather than under the next one.
-      style={open ? { zIndex: 20 } : undefined}
-      className="group relative flex h-full flex-col border border-rule bg-panel/60 transition-colors duration-200 hover:border-accent/60"
-    >
+    <article className="group relative flex h-full flex-col overflow-hidden border border-rule bg-panel/60 transition-colors duration-200 hover:border-accent/60">
       <button
         type="button"
-        aria-expanded={expanded}
-        onClick={() => !canHover && setOpen((v) => !v)}
-        className="flex flex-1 flex-col text-left"
+        onClick={() => setDetailsOpen(true)}
+        aria-haspopup="dialog"
+        className="flex flex-1 cursor-pointer flex-col text-left"
       >
         {/* No placeholder block when there is no image — an empty grey box
             reads as a broken thumbnail rather than a deliberate choice. */}
@@ -109,38 +100,23 @@ export function ProjectCard({
           </h3>
 
           {/*
-            The description reserves three lines in the layout and never
-            changes the card's height. Opening it floats the full text over
-            the card on its own layer: every card in a grid row is stretched
-            to a common height, so one card growing re-flowed the whole row,
-            and running the pointer along a row read as a jump at each
-            crossing. The longest description here is six lines, so the
-            floated copy is left to size itself rather than scroll.
+            Fixed at three lines, always. The full text needs ~266px and no
+            region of the card has that, so every hover panel covered either
+            the tags or the action buttons. Reading it in full is a click,
+            which is also the behaviour touch already had.
           */}
-          <div className="relative mt-3">
-            <p className="line-clamp-3 text-sm leading-relaxed text-fog">
-              {project.description}
-            </p>
+          <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-fog">
+            {project.description}
+          </p>
 
-            <p
-              aria-hidden="true"
-              className={`absolute inset-x-0 top-0 z-10 -m-2 rounded-xs bg-panel p-2 text-sm leading-relaxed text-chalk ring-1 ring-accent/30 transition-opacity duration-200 ${
-                open ? "opacity-100" : "pointer-events-none opacity-0"
-              }`}
-            >
-              {project.description}
-            </p>
-          </div>
-
-          {/* Touch has no hover to reveal the rest, so say the card opens. */}
-          {!canHover && (
-            <span
-              aria-hidden="true"
-              className="mt-2 font-mono text-[0.625rem] tracking-[0.14em] text-accent uppercase"
-            >
-              {open ? "Tap to close" : "Tap to read more"}
-            </span>
-          )}
+          {/* Say the card opens. Hover reveals nothing now, so the hint is
+              the only affordance on any pointer type. */}
+          <span
+            aria-hidden="true"
+            className="mt-2 font-mono text-[0.625rem] tracking-[0.14em] text-accent uppercase"
+          >
+            {canHover ? "Click to read more" : "Tap to read more"}
+          </span>
 
           {/* mt-auto pins the tags to the floor of a stretched card. */}
           <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
@@ -189,6 +165,14 @@ export function ProjectCard({
 
       {reelOpen && project.reel && (
         <ReelModal project={project} onClose={() => setReelOpen(false)} />
+      )}
+
+      {detailsOpen && (
+        <ReelModal
+          project={project}
+          mode="details"
+          onClose={() => setDetailsOpen(false)}
+        />
       )}
     </article>
   );
