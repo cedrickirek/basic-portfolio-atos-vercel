@@ -24,6 +24,7 @@ export const projects: Project[] = [
       "MSc thesis (HEC Paris · École Polytechnique, 2026). A RAG tutor grounded in the Ivorian CIAM curriculum: a 722-segment annotated corpus, a four-variant retrieval stack, and a novel pedagogical retriever enforcing a theory-plus-worked-example mix.",
     stack: ["RAG", "LLM", "BM25", "Multilingual-E5", "Python"],
     category: "Research",
+    thumbnail: "/images/curriculum-rag-thesis.jpg",
     links: { pdf: "/docs/hec-msc-thesis-curriculum-rag.pdf" },
   },
   {
@@ -49,6 +50,7 @@ export const projects: Project[] = [
       "A hybrid human–AI tutoring marketplace pairing each client with a human tutor and a personalised LLM assistant for 24/7 support. Started at the HEC Paris Start-up Launchpad.",
     stack: ["LLM", "Marketplace", "EdTech"],
     category: "Apps",
+    thumbnail: "/images/tutorly.jpg",
   },
   {
     slug: "basketball-shooting-analyzer",
@@ -85,6 +87,7 @@ export const projects: Project[] = [
       "A donation platform for an Ivorian association funding school kits. Donors fund campaigns rather than individual children, and every purchase and delivery is published with receipts and consent-gated photos — the transparency is the product's whole argument.",
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "PayDunya"],
     category: "Humanitarian",
+    thumbnail: "/images/kits-scolaires.jpg",
     // Repo is private; the live deployment is the public artefact.
     links: { demo: "https://donation-app-wine.vercel.app/" },
   },
