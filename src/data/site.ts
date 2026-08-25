@@ -35,6 +35,7 @@ export const interests = [
   "Podcasting",
   "East Asia",
   "Basketball",
+  "Football",
   "Productivity",
   "Religion",
 ] as const;

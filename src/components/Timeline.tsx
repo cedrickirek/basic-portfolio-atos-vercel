@@ -36,6 +36,11 @@ export function Timeline({
             />
             <span className="block font-mono text-[0.6875rem] tracking-[0.18em] text-accent uppercase">
               {entry.year}
+              {entry.country && (
+                /* Country rides the year line in the dimmer foreground, so it
+                   reads as metadata rather than as a second heading. */
+                <span className="text-fog"> · {entry.country}</span>
+              )}
             </span>
             <span className="mt-2 block text-sm leading-relaxed text-chalk sm:text-base">
               {entry.title}

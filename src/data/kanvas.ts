@@ -9,7 +9,7 @@
  */
 export const imageSlots = {
   /** Full-bleed backdrop of the "Selected work" banner on the landing page. */
-  workBanner: null as string | null,
+  workBanner: "/images/selected-work.jpg" as string | null,
   /** The hero panel photograph. */
   heroPortrait: "/carousel/selfie.webp" as string | null,
 };

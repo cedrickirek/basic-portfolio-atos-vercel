@@ -47,10 +47,9 @@ export default function Home() {
             </p>
             <Triptych />
             <p className="mt-8 max-w-xl text-base leading-relaxed text-slate-200/90 sm:text-lg">
-              {site.location}. I am building toward being genuinely strong on
-              both sides at once &mdash; deep enough technically to build the
-              thing, sharp enough commercially to know why it is worth
-              building. Most people pick one. I intend to keep both.
+              I am building toward being deep enough technically to create great
+              things and sharp enough commercially to know what is worth
+              building and selling it accordingly.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -58,13 +57,13 @@ export default function Home() {
                 href="/projects"
                 className="bg-white px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-night uppercase transition-colors hover:bg-accent"
               >
-                View projects
+                View my projects
               </Link>
               <a
                 href={contact.cv}
                 className="border border-white/30 px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-white uppercase transition-colors hover:border-accent hover:text-accent"
               >
-                Download CV
+                Visualize my CV
               </a>
             </div>
           </div>
@@ -102,9 +101,9 @@ export default function Home() {
                   </span>
                 </p>
                 <p className="mt-2 font-mono text-[0.6875rem] leading-relaxed tracking-[0.14em] text-white uppercase">
-                  Co-founder &amp; CTO — EdTech
+                  Recent graduate
                   <br />
-                  Paris, France
+                  Co-founder of an EdTech startup
                 </p>
               </div>
             </div>
@@ -144,15 +143,15 @@ export default function Home() {
               Hey, I&apos;m Cedric Emmanuel.
             </h2>
             <p className="mt-8 max-w-3xl text-lg leading-relaxed sm:text-xl">
-              An aspiring ML/AI engineer and co-founder based in Paris, France,
-              working across research, applied machine learning, and the
+              An aspiring ML/AI engineer who has a very transdisciplinary mindset. I currently live in Paris, France,
+              and working across research, applied machine learning, and the
               products built on top of them.
             </p>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed sm:text-xl">
               My interests run wide, and new ideas arrive faster than I can
-              act on them. So I build around the ones that stay &mdash; a
-              model, a prototype, a small tool &mdash; and keep what survives
-              contact with real use. Most of it ends up in{" "}
+              act on them. So I build around the ones that stay, resulting in a
+              model, a prototype, a small tool. I then keep what survives
+              contact with real use. Many of them end up in{" "}
               <Link
                 href="/projects"
                 className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
@@ -166,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* ---- Work banner (the template's reel section, made honest: same
-              full-bleed backdrop and big stroked type, but the action is a
+              full-bleed backdrop and big display type, but the action is a
               real link rather than a play button with no video). ---- */}
       <section className="relative overflow-hidden border-y border-rule">
         {imageSlots.workBanner ? (
@@ -175,7 +174,7 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-40 mix-blend-luminosity"
+            className="object-cover opacity-30 mix-blend-luminosity"
           />
         ) : (
           /* Placeholder until an image lands in the slot -- see
@@ -185,12 +184,19 @@ export default function Home() {
             className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(125,211,252,0.08),transparent_65%)]"
           />
         )}
+        {/* Scrim. The headline is solid white now, but a photograph can still
+            put a bright patch behind a letter; this guarantees the contrast
+            instead of leaving it to whichever image sits in the slot. It is
+            strongest at the left, where the text starts. */}
+        {imageSlots.workBanner && (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-night via-night/70 to-night/40"
+          />
+        )}
         <div className="relative flex min-h-[50vh] flex-col items-start justify-center px-5 py-20 sm:px-10 lg:px-16">
           <p className="eyebrow mb-6">Selected work</p>
-          <p
-            aria-hidden="true"
-            className="text-stroke text-[clamp(2.2rem,6vw,6rem)] leading-[1] font-extrabold tracking-tight uppercase"
-          >
+          <p className="text-[clamp(2.2rem,6vw,6rem)] leading-[1] font-extrabold tracking-tight text-white uppercase">
             Research · Apps
             <br />
             Humanitarian
