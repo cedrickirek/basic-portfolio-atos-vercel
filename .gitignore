@@ -54,3 +54,10 @@ next-env.d.ts
 
 # Scratch screenshots, not part of the site
 /screenshots-to-be-deleted/
+
+# Raw reel takes: multi-GB camera originals. Deliberately OUTSIDE public/ --
+# everything under public/ is copied wholesale into the static export, so
+# keeping them there put 3.2 GB in out/ and would have deployed it. This
+# ignore only keeps them out of git; the location is what keeps them out of
+# the build. The compressed, web-ready copies live in public/videos/.
+/reels-content/

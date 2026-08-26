@@ -73,6 +73,11 @@ export const projects: Project[] = [
     stack: ["LLM", "Marketplace", "EdTech"],
     category: "Apps",
     thumbnail: "/images/tutorly.jpg",
+    reel: {
+      src: "/videos/tutorly.mp4",
+      poster: "/videos/tutorly.jpg",
+      caption: "TUTORLY IS A GAME CHANGER!!!"
+    },
   },
   {
     slug: "basketball-shooting-analyzer",
