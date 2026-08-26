@@ -30,9 +30,9 @@ export const projects: Project[] = [
   {
     slug: "curriculum-rag-thesis",
     title:
-      "Curriculum-Grounded Retrieval-Augmented Generation for Terminale C Mathematics Self-Tutoring in Côte d'Ivoire",
+      "Curriculum-Grounded RAG for high-school Mathematics Self-Tutoring in Côte d'Ivoire",
     description:
-      "MSc thesis (HEC Paris · École Polytechnique, 2026). A RAG tutor grounded in the Ivorian CIAM curriculum: a 722-segment annotated corpus, a four-variant retrieval stack, and a novel pedagogical retriever enforcing a theory-plus-worked-example mix.",
+      "MSc thesis (HEC Paris · École Polytechnique, 2026). A RAG tutor grounded in the Ivorian MATHS curriculum: a 722-segment annotated corpus, a four-variant retrieval stack, and a novel pedagogical retriever enforcing a theory-plus-worked-example mix.",
     stack: ["RAG", "LLM", "BM25", "Multilingual-E5", "Python"],
     category: "Research",
     thumbnail: "/images/curriculum-rag-thesis.jpg",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     slug: "kits-scolaires",
     title: "Kits Scolaires — donation transparency app",
     description:
-      "A donation platform for an Ivorian association funding school kits. Donors fund campaigns rather than individual children, and every purchase and delivery is published with receipts and consent-gated photos — the transparency is the product's whole argument.",
+      "A donation platform for an Ivorian association helping less favoured people. Donors fund campaigns rather than individual children, and every purchase and delivery is published with receipts and consent-gated photos — the transparency is the product's whole argument.",
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "PayDunya"],
     category: "Humanitarian",
     thumbnail: "/images/kits-scolaires.jpg",
