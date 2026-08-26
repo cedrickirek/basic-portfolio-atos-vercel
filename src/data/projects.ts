@@ -19,6 +19,17 @@ export type Project = {
   reel?: { src: string; poster?: string; caption?: string };
   /** Slide deck for the project, as a PDF in public/docs/. */
   slides?: string;
+  /**
+   * Set once this project has a written case study. It gates both the
+   * generated /projects/<slug> route and the link to it, so the two can
+   * never disagree -- a link to a route that was never generated is a 404,
+   * and the type checker cannot see that.
+   */
+  caseStudy?: {
+    problem: string;
+    approach: string;
+    result: string;
+  };
 };
 
 /**

@@ -20,8 +20,8 @@ C'est un cul-de-sac : on lit trois lignes de plus, et c'est tout.
       │  clic
       ▼
   MODALE : le reel se lance tout de suite
-      │  · description sous la vidéo
-      │  · « Lire l'étude de cas → »
+      │  · description AU-DESSUS de la vidéo
+      │  · « Lire l'étude de cas → » en dessous
       ▼
   PAGE PROJET  /projects/<slug>
       · reel
@@ -34,6 +34,26 @@ récompense du clic ; la page est pour qui veut aller plus loin.
 
 **Décision prise :** la modale reste, elle ne montre plus la description
 seule. Un clic = le reel démarre.
+
+### Disposition de la modale, arrêtée le 26/08
+
+Trois blocs empilés, dans cet ordre :
+
+```
+  ┌──────────────────────────────┐
+  │  Titre + description         │  ← le contexte AVANT la vidéo
+  ├──────────────────────────────┤
+  │                              │
+  │        REEL 9:16             │  ← la vidéo
+  │                              │
+  ├──────────────────────────────┤
+  │  Lire l'étude de cas →       │  ← la sortie vers la page
+  └──────────────────────────────┘
+```
+
+La description est **au-dessus** du reel, pas en légende dessous : on sait
+ce qu'on va regarder avant de le regarder. Le lien vers la page détaillée
+ferme la modale par le bas.
 
 ---
 
@@ -101,9 +121,9 @@ Il manque uniquement du contenu : titre, description, stack, catégorie
 `"School projects"`. Une entrée = quelques lignes dans `projects.ts`, même
 forme que les six existantes.
 
-Question ouverte pour Cédric : **est-ce que ces travaux méritent d'être
-montrés ?** Une catégorie avec un seul TP faible dessert le reste. Mieux
-vaut deux projets solides que quatre remplissages.
+**Décidé le 26/08 : oui, ils sont montrés.** Cédric juge ces travaux
+solides. La question du remplissage ne se pose donc pas — la catégorie
+s'affiche dès qu'une entrée existe.
 
 ---
 
@@ -136,12 +156,12 @@ L'ordre compte : chaque étape rend la suivante testable.
 1. **Un reel, un seul, sur Tutorly.** Il valide toute la chaîne : format,
    poids, poster, modale, bande d'accueil. Tant qu'il n'existe pas, tout le
    reste est théorique.
-2. **Rebrancher la modale** sur le reel (description en légende, lien vers
-   la page en dessous). Testable dès que l'étape 1 est faite.
+2. **Rebrancher la modale** sur le reel : description au-dessus, reel au
+   milieu, lien vers la page en dessous. Testable dès l'étape 1 faite.
 3. **La page projet pour Tutorly**, gabarit complet avec du vrai texte.
 4. **Décider** : est-ce que les cinq autres suivent, ou est-ce qu'on
    s'arrête à deux ou trois ?
-5. **School projects**, si Cédric juge que le contenu tient debout.
+5. **School projects** — validé, il ne manque que les entrées.
 
 ---
 

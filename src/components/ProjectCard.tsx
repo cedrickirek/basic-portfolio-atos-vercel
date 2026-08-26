@@ -55,8 +55,7 @@ export function ProjectCard({
   index?: number;
 }) {
   const [canHover, setCanHover] = useState(true);
-  const [detailsOpen, setDetailsOpen] = useState(false);
-  const [reelOpen, setReelOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const query = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -70,7 +69,7 @@ export function ProjectCard({
     <article className="group relative flex h-full flex-col overflow-hidden border border-rule bg-panel/60 transition-colors duration-200 hover:border-accent/60">
       <button
         type="button"
-        onClick={() => setDetailsOpen(true)}
+        onClick={() => setModalOpen(true)}
         aria-haspopup="dialog"
         className="flex flex-1 cursor-pointer flex-col text-left"
       >
@@ -115,7 +114,13 @@ export function ProjectCard({
             aria-hidden="true"
             className="mt-2 font-mono text-[0.625rem] tracking-[0.14em] text-accent uppercase"
           >
-            {canHover ? "Click to read more" : "Tap to read more"}
+            {project.reel
+              ? canHover
+                ? "Click to watch"
+                : "Tap to watch"
+              : canHover
+                ? "Click to read more"
+                : "Tap to read more"}
           </span>
 
           {/* mt-auto pins the tags to the floor of a stretched card. */}
@@ -132,22 +137,10 @@ export function ProjectCard({
         </div>
       </button>
 
-      {/* One row for everything actionable: watch, slides, demo, repo, pdf.
-          Empty until a project actually has any, so cards stay clean. */}
-      {(project.reel || project.slides || project.links) && (
+      {/* Outbound links only. Watching the reel is the card's own click, so
+          a Watch button here would be a second control for the same thing. */}
+      {(project.slides || project.links) && (
         <div className="flex flex-wrap gap-2 px-5 pb-5">
-          {project.reel && (
-            <button
-              type="button"
-              onClick={() => setReelOpen(true)}
-              className="group/link inline-flex items-center gap-1.5 border border-accent/40 bg-accent/10 px-3 py-2 font-mono text-[0.6875rem] tracking-[0.14em] text-accent uppercase transition-colors hover:border-accent hover:bg-accent hover:text-night"
-            >
-              <span aria-hidden="true" className="text-[0.5rem]">
-                &#9654;
-              </span>
-              Watch
-            </button>
-          )}
           {project.slides && <CardLink href={project.slides}>Slides</CardLink>}
           {project.links?.demo && (
             <CardLink href={project.links.demo} external>
@@ -163,16 +156,8 @@ export function ProjectCard({
         </div>
       )}
 
-      {reelOpen && project.reel && (
-        <ReelModal project={project} onClose={() => setReelOpen(false)} />
-      )}
-
-      {detailsOpen && (
-        <ReelModal
-          project={project}
-          mode="details"
-          onClose={() => setDetailsOpen(false)}
-        />
+      {modalOpen && (
+        <ReelModal project={project} onClose={() => setModalOpen(false)} />
       )}
     </article>
   );
