@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
-import { MotionProvider } from "@/components/MotionProvider";
 import { GridLines } from "@/components/GridLines";
 import { KanvasHeader } from "@/components/KanvasHeader";
 import { site } from "@/data/site";
@@ -50,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <KanvasHeader />
         {/* z-10 keeps every section above the grid overlay, below the header. */}
         <div className="relative z-10 pt-16">
-          <MotionProvider>{children}</MotionProvider>
+          {children}
         </div>
       </body>
     </html>

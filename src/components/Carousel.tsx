@@ -22,7 +22,7 @@ export function Carousel() {
 
   useEffect(() => {
     if (paused || reduced) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 4000);
+    const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 1650);
     return () => clearInterval(id);
   }, [paused, reduced]);
 
@@ -62,7 +62,7 @@ export function Carousel() {
             fill
             sizes="(max-width: 768px) 100vw, 360px"
             priority={i === 0}
-            className="object-cover transition-opacity duration-500"
+            className="object-cover transition-opacity duration-300"
             style={{ opacity: i === index ? 1 : 0 }}
           />
         ))}

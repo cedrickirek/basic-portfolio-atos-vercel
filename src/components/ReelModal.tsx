@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Project } from "@/data/projects";
 
 /**
@@ -25,6 +25,10 @@ export function ReelModal({
   const restoreRef = useRef<HTMLElement | null>(null);
 
   const hasCaseStudy = Boolean(project.caseStudy);
+  // Drives the caption fade. Keyed off the video's own play event rather
+  // than a timer, so a reel that autoplay blocks keeps its caption up until
+  // the viewer actually presses play.
+  const [started, setStarted] = useState(false);
 
   const focusables = useCallback(
     () =>
@@ -139,19 +143,36 @@ export function ReelModal({
           {/* The reel, when there is one. Cards without one still open --
               the modal is the project's front door either way. */}
           {project.reel && (
-            <div>
+            /* The frame is 9:16, the shape the reel is shot in, so the video
+               fills it edge to edge instead of letterboxing inside a wider
+               panel. Capped by height as well: on a short screen a full 9:16
+               column would push the description off the top. */
+            <div className="relative mx-auto aspect-9/16 h-[62svh] w-auto max-w-full overflow-hidden bg-black">
               <video
                 src={project.reel.src}
                 poster={project.reel.poster}
                 controls
                 autoPlay
                 playsInline
-                className="max-h-[62svh] w-full bg-black object-contain"
+                onPlay={() => setStarted(true)}
+                className="h-full w-full object-cover"
               />
+
+              {/* Caption over the video, the way reels do it -- it belongs to
+                  the frame, not to the page under it, and it is gone once the
+                  video is speaking for itself. Sits clear of the control bar
+                  so it never blocks play/pause. */}
               {project.reel.caption && (
-                <p className="mt-2 text-sm leading-relaxed text-fog">
-                  {project.reel.caption}
-                </p>
+                <div
+                  aria-hidden={started}
+                  className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-night via-night/70 to-transparent px-4 pt-10 pb-16 transition-opacity duration-500 ${
+                    started ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  <p className="text-sm leading-relaxed font-medium text-white text-balance">
+                    {project.reel.caption}
+                  </p>
+                </div>
               )}
             </div>
           )}
